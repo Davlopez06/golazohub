@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #1e1e1e;
+  --white-100: #ffffff;
+  --white-90: #e0e0e0;
+  --dark: #2d2d2d;
+  --dark-90: #454545;
+  --gold-100: #c7ae6a;
+  --gold-90: #b79b5c;
+  --gold-80: #a78c4f;
+  --gold-70: #9f7e41;
+  --gold-60: #e3d29c;
+}
+
+html,
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--white-100);
+  font-family: "Geist", serif;
+  font-weight: 300;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Geist", serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  display: block;
+}

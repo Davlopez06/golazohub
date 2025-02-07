@@ -1,0 +1,13 @@
+@if (!isLoad) {
+    <section class="landing-page-load">
+       <img src="../../assets/Ball.png" alt="Ball" class="landing-page-logo">
+       <section class="landing-page-name-ctn">
+           <img src="../../assets/Name.png" alt="Ball" class="landing-page-name">
+       </section>
+   </section>
+} @else {
+    <section class="landing-page-loaded">
+        <app-navbar [selectedItem]="'Home'"></app-navbar>
+        <main class="landing-page-body"></main>
+    </section>
+}

@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <section class="navbar-name">
+    <img class="navbar-name-img" src="../../assets/Ball.png" alt="Name" />
+  </section>
+  <div class="navbar-items">
+    <a
+      *ngFor="let item of navItems"
+      [ngClass]="{ selected: selectedItem === item.name }"
+      [routerLink]="item.url"
+      class="navbar-item"
+    >
+      {{ item.name }}
+    </a>
+  </div>
+</nav>

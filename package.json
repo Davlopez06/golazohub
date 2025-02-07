@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:golazohub": "node dist/golazohub/server/server.mjs"
+    "serve:ssr:golazohub": "node dist/golazohub/server/server.mjs",
+    "dev": "npm run build && npm run start"
   },
   "private": true,
   "dependencies": {
