@@ -1,17 +1,13 @@
-@if (!isLoad) {
-    <section class="landing-page-load">
-       <img src="../../assets/Ball.png" alt="Ball" class="landing-page-logo">
-       <section class="landing-page-name-ctn">
-           <img src="../../assets/Name.png" alt="Ball" class="landing-page-name">
-       </section>
-   </section>
-} @else {
-    <section class="landing-page-loaded">
-        <app-navbar [selectedItem]="'Home'"></app-navbar>
-        <main class="landing-page-body">
-            <section class="matches-ctn">
-                <h2>Today Matches</h2>
-            </section>
-        </main>
-    </section>
-}
+<section class="landing-page-load" [ngClass]="{ hide: isLoad }">
+  <img src="../../assets/Ball.png" alt="Ball" class="landing-page-logo" />
+  <section class="landing-page-name-ctn">
+    <img src="../../assets/Name.png" alt="Ball" class="landing-page-name" />
+  </section>
+</section>
+
+<section class="landing-page-loaded" [ngClass]="{ hide: !isLoad }">
+  <app-navbar [selectedItem]="'Home'" />
+  <main class="landing-page-body">
+    <app-slider-matches />
+  </main>
+</section>

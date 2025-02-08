@@ -1,25 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-// import { Fetch } from '../../utils/fetch';
-import { ApiService } from '../../app/app.service';
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
-import { url } from 'inspector';
 import { HttpClientModule } from '@angular/common/http';
-import MatchesExample from '../../data-example/matches.json'
+import { SliderMatchesComponent } from '../../components/slider-matches/slider-matches.component';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule, NavbarComponent, HttpClientModule],
+  imports: [
+    CommonModule,
+    NavbarComponent,
+    HttpClientModule,
+    SliderMatchesComponent,
+  ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
 })
 export class LandingPageComponent {
   isLoad: boolean = false;
   matches: {} = {};
-
-  constructor(private apiService: ApiService) {}
 
   setIsLoad() {
     setTimeout(() => {
@@ -29,16 +27,5 @@ export class LandingPageComponent {
 
   ngOnInit() {
     this.setIsLoad();
-    // this.apiService.getPosts(`${environment.apiUrl}matches`).subscribe(
-    //   (response) => {
-    //     console.log('Respuesta:', response);
-    //     this.matches = response;
-    //   },
-    //   (error) => {
-    //     console.error('Error:', error);
-    //   }
-    // );
-    this.matches = MatchesExample;
-    console.log('this.matches', this.matches)
   }
 }
