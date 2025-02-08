@@ -65,9 +65,9 @@
   }
 
   &-competition-logo {
-    aspect-ratio: 1/1;
-    max-width: 32px;
-    width: 32px;
+    height: 32px;
+    max-height: 32px;
+    object-fit: cover;
   }
 
   &-match-info {
@@ -117,9 +117,9 @@
   }
 
   &-local-team-logo {
-    aspect-ratio: 1/1;
-    max-width: 32px;
-    width: 32px;
+    height: 32px;
+    max-height: 32px;
+    object-fit: cover;
   }
 
   &-local-team-name {
@@ -179,9 +179,9 @@
   }
 
   &-title-logo {
-    aspect-ratio: 1/1;
-    max-width: 32px;
-    width: 32px;
+    height: 32px;
+    max-height: 32px;
+    object-fit: cover;
   }
 }
 
