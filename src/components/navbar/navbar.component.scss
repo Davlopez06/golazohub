@@ -33,15 +33,18 @@
     position: relative;
 
     &::before {
-        background: var(--gold-100);
-        border-radius: 50px;
-        content: '';
-        height: 2px;
-        left: 0;
-        position: absolute;
-        top: 100%;
-        width: 100%;
+      background: var(--gold-100);
+      border-radius: 50px;
+      content: '';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      top: 100%;
+      width: 100%;
     }
   }
+}
 
+.app-nav {
+  background: blue;
 }

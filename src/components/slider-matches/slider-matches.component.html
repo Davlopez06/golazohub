@@ -1,5 +1,9 @@
 <section class="slider-matches">
-  <h2 class="slider-matches-title">Today Matches</h2>
+  <h2 class="slider-matches-title" *ngIf="sliderType !== 'leagues'">Today Matches</h2>
+  <h2 class="slider-matches-title-icon" *ngIf="sliderType === 'leagues'">
+    <img [src]="competitions?.emblem || ''" alt="competition-logo" class="slider-matches-title-logo" />
+    {{ competitions?.name || '' }}
+  </h2>
   <main
     #scrollContainer
     (mousedown)="onMouseDown($event)"
@@ -9,55 +13,35 @@
     class="slider-matches-ctn"
   >
     <section class="slider-matches-match" *ngFor="let match of matches">
-      <div class="slider-matches-match-competition">
-        <img
-          [src]="match?.competition?.emblem || ''"
-          alt="competition-logo"
-          class="slider-matches-competition-logo"
-        />
-        <p>{{ match?.competition?.name || "" }}</p>
+      <div class="slider-matches-match-competition" *ngIf="sliderType !== 'leagues'">
+        <img [src]="match?.competition?.emblem || ''" alt="competition-logo" class="slider-matches-competition-logo" />
+        <p>{{ match?.competition?.name || '' }}</p>
       </div>
       <section class="slider-matches-match-info">
         <div class="slider-matches-match-info-slide">
-          <p class="slider-matches-match-number" *ngIf="match?.matchday">
-            Matchweek {{ match.matchday }}
-          </p>
+          <p class="slider-matches-match-number" *ngIf="match?.matchday">Matchweek {{ match.matchday }}</p>
           <p class="slider-matches-match-date">{{ getDate(match?.utcDate) }}</p>
         </div>
         <section class="slider-matches-match-score">
           <div class="slider-matches-local-team">
-            <img
-              [src]="match?.homeTeam?.crest || ''"
-              alt="local-team-logo"
-              class="slider-matches-local-team-logo"
-            />
+            <img [src]="match?.homeTeam?.crest || defaultShield" alt="local-team-logo" class="slider-matches-local-team-logo" />
             <p class="slider-matches-local-team-name">
-              {{ match?.homeTeam?.shortName || "" }}
+              {{ match?.homeTeam?.shortName || '' }}
             </p>
           </div>
-          <div
-            class="slider-matches-score-ctn"
-            *ngIf="match?.status === 'FINISHED'"
-          >
+          <div class="slider-matches-score-ctn" *ngIf="match?.status === 'FINISHED'">
             <p>{{ match?.score?.fullTime?.home || 0 }}</p>
             -
             <p>{{ match?.score?.fullTime?.away || 0 }}</p>
           </div>
-          <div
-            class="slider-matches-coming"
-            *ngIf="match?.status !== 'FINISHED'"
-          >
+          <div class="slider-matches-coming" *ngIf="match?.status !== 'FINISHED'">
             <p>Coming</p>
             <p>{{ getTime(match?.utcDate) }}</p>
           </div>
           <div class="slider-matches-visit-team">
-            <img
-              [src]="match?.awayTeam?.crest || ''"
-              alt="local-team-logo"
-              class="slider-matches-visit-team-logo"
-            />
+            <img [src]="match?.awayTeam?.crest || defaultShield" alt="local-team-logo" class="slider-matches-visit-team-logo" />
             <p class="slider-matches-visit-team-name">
-              {{ match?.awayTeam?.shortName || "" }}
+              {{ match?.awayTeam?.shortName || '' }}
             </p>
           </div>
         </section>

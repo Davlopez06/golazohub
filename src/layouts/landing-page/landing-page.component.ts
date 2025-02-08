@@ -6,12 +6,7 @@ import { SliderMatchesComponent } from '../../components/slider-matches/slider-m
 
 @Component({
   selector: 'app-landing-page',
-  imports: [
-    CommonModule,
-    NavbarComponent,
-    HttpClientModule,
-    SliderMatchesComponent,
-  ],
+  imports: [CommonModule, NavbarComponent, HttpClientModule, SliderMatchesComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
 })

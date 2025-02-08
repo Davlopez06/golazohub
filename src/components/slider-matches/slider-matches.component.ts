@@ -1,8 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 // import MatchesExample from '../../data-example/matches.json';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../app/app.service';
 import { environment } from '../../environments/environment';
+import getComingMatches from '../../utils/getComingMatches';
 
 @Component({
   selector: 'app-slider-matches',
@@ -11,16 +12,18 @@ import { environment } from '../../environments/environment';
   styleUrl: './slider-matches.component.scss',
 })
 export class SliderMatchesComponent {
-  matches: any[] = [];
+  @Input() sliderType: string = 'matches';
+  @Input() league: string = '';
   @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
-
-  constructor(private apiService: ApiService) {}
-
+  matches: any[] = [];
+  competitions: any;
   isDown = false;
   startX = 0;
   scrollLeft = 0;
-
   items = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
+  defaultShield: string = '../../assets/default-shield.png';
+
+  constructor(private apiService: ApiService) {}
 
   onMouseDown(event: MouseEvent) {
     this.isDown = true;
@@ -65,7 +68,7 @@ export class SliderMatchesComponent {
     return new Intl.DateTimeFormat('es-ES', options).format(matchDate);
   }
 
-  ngOnInit() {
+  getMatches() {
     this.apiService.getPosts(`${environment.apiUrl}matches`).subscribe(
       (response) => {
         const { matches = [] } = response || {};
@@ -73,7 +76,29 @@ export class SliderMatchesComponent {
       },
       (error) => {
         console.error('Error:', error);
-      }
+      },
     );
+  }
+
+  getLeagues() {
+    this.apiService.getPosts(`${environment.apiUrl}competitions/${this.league}/matches`).subscribe(
+      (response) => {
+        const { matches = [], competition = {} } = response || {};
+        this.matches = getComingMatches(matches);
+        this.competitions = competition;
+      },
+      (error) => {
+        console.error('Error:', error);
+      },
+    );
+  }
+
+  getData() {
+    if (this.sliderType === 'matches') this.getMatches();
+    if (this.sliderType === 'leagues') this.getLeagues();
+  }
+
+  ngOnInit() {
+    this.getData();
   }
 }

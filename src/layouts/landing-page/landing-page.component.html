@@ -6,8 +6,14 @@
 </section>
 
 <section class="landing-page-loaded" [ngClass]="{ hide: !isLoad }">
-  <app-navbar [selectedItem]="'Home'" />
+  <app-navbar [selectedItem]="'Home'" class="app-nav"/>
   <main class="landing-page-body">
     <app-slider-matches />
+    <app-slider-matches [sliderType]="'leagues'" [league]="'CL'" />
+    <app-slider-matches [sliderType]="'leagues'" [league]="'PL'" />
+    <app-slider-matches [sliderType]="'leagues'" [league]="'PD'" />
+    <app-slider-matches [sliderType]="'leagues'" [league]="'SA'" />
+    <app-slider-matches [sliderType]="'leagues'" [league]="'BL1'" />
+    <app-slider-matches [sliderType]="'leagues'" [league]="'FL1'" />
   </main>
 </section>
