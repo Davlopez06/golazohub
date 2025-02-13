@@ -12,7 +12,6 @@ import { SliderMatchesComponent } from '../../components/slider-matches/slider-m
 })
 export class LandingPageComponent {
   isLoad: boolean = false;
-  matches: {} = {};
 
   setIsLoad() {
     setTimeout(() => {

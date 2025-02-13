@@ -1,4 +1,4 @@
-<section class="slider-matches">
+<section class="slider-matches" *ngIf="matches.length !== 0 || competitions">
   <h2 class="slider-matches-title" *ngIf="sliderType !== 'leagues'">Today Matches</h2>
   <h2 class="slider-matches-title-icon" *ngIf="sliderType === 'leagues'">
     <img [src]="competitions?.emblem || ''" alt="competition-logo" class="slider-matches-title-logo" />
