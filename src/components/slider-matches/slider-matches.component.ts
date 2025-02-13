@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../../app/app.service';
 import { environment } from '../../environments/environment';
 import getComingMatches from '../../utils/getComingMatches';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-slider-matches',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './slider-matches.component.html',
   styleUrl: './slider-matches.component.scss',
 })
