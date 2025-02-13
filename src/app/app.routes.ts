@@ -6,5 +6,5 @@ import { LeagueComponent } from '../layouts/league/league.component';
 export const routes: Routes = [
     { path: '', component: LandingPageComponent},
     { path: 'leagues', component: LeaguesComponent},
-    { path: 'leagues/:id', component: LeagueComponent},
+    { path: 'leagues/:id', component: LeagueComponent, data: { renderMode: 'no-prerender' } },
 ];
